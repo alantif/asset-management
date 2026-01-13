@@ -2,9 +2,15 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AssignmentsModule } from './assignments/assignments.module';
+import { CategoriesModule } from './categories/categories.module';
+import { AssetsModule } from './assets/assets.module';
+import { EmployeesModule } from './employees/employees.module';
 
 @Module({
   imports: [
+    CategoriesModule,
+    AssetsModule,
+    EmployeesModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],

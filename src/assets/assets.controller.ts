@@ -1,4 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
+import { AssetsService } from './assets.service';
+import { AssetsQueryDto } from './dto/assets-query.dto';
 
-@Controller('assets')
-export class AssetsController {}
+@Controller('api/assets')
+export class AssetsController {
+  constructor(private readonly service: AssetsService) {}
+
+  @Get()
+  findAll(@Query() q: AssetsQueryDto) {
+    return this.service.findAll(q);
+  }
+}
